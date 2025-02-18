@@ -2,7 +2,7 @@
 
 ## Component requirements
 
-We enforce the following requirements in all types of projects.
+We enforce the following requirements in all projects.
 
 1. **Open-source code**: projects must use either MIT or Apache 2.0, which are both [OSI approved](https://opensource.org/licenses) open-source licenses, and they must be openly available in platforms such as GitHub.
 2. **Open data**: data produced by projects (dataset tools and data modules in particular) should use a [CC-BY-4.0 license](https://creativecommons.org/licenses/by/4.0/) whenever possible.
