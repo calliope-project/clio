@@ -1,0 +1,12 @@
+# Citation file
+# For more information, see:
+# https://citation-file-format.github.io/
+cff-version: 1.2.0
+message: If you use this software or data produced by it, please cite it using the metadata from this file.
+title: Data Module Template
+repository: https://github.com/calliope-project/clio
+license: MIT
+authors:
+  - given-names: Ivan
+    family-names: Ruiz Manuel
+    orcid: https://orcid.org/0000-0003-2288-6423
