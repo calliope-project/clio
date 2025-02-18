@@ -3,10 +3,20 @@
 # https://citation-file-format.github.io/
 cff-version: 1.2.0
 message: If you use this software or data produced by it, please cite it using the metadata from this file.
-title: Data Module Template
+title: "clio - a framework for modular and easy to understand energy modelling tools"
 repository: https://github.com/calliope-project/clio
 license: MIT
+version: 0.0.1
 authors:
   - given-names: Ivan
     family-names: Ruiz Manuel
     orcid: https://orcid.org/0000-0003-2288-6423
+  - given-names: Bryn
+    family-names: Pickering
+    orcid: https://orcid.org/0000-0003-4044-6587
+  - given-names: Francesco
+    family-names: Lombardi
+    orcid: https://orcid.org/0000-0002-7624-5886
+  - given-names: Stefan
+    family-names: Pfenninger
+    orcid: https://orcid.org/0000-0002-8420-9498
