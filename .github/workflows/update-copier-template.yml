@@ -1,0 +1,77 @@
+name: "Update project against upstream Copier template"
+description: "A collection of steps that can be reused by Clio templated projects to check against the upstream template"
+
+on:
+  workflow_call:
+
+
+defaults:
+  run:
+    shell: bash -l {0}
+
+jobs:
+  copier-update:
+    runs-on: ubuntu-latest
+    env:
+      UPDATE: "false"
+      CONFLICTS: ""
+    steps:
+        - uses: actions/checkout@v4
+
+        - uses: mamba-org/setup-micromamba@v2
+          with:
+            micromamba-version: '1.5.10-0'
+            environment-name: ${{ github.event.repository.name }}-copier
+            create-args: copier python=3.11
+            post-cleanup: all
+            cache-environment: true
+
+        - name: Get current Copier commit to compare against
+          run: |
+            COMMIT=$(grep "_commit:" .copier-answers.yml | cut -f2 -d' ')
+            SRC=$(grep "_src_path:" .copier-answers.yml | cut -f2 -d' ' | cut -f1 -f2 -d'.')
+            echo "COMPARE=${SRC}/compare/${SRC}" >> $GITHUB_ENV
+
+        - run: copier update -A -f
+
+        - id: requires-update
+          run: test -z "$(git status --porcelain)" || echo "UPDATE=true" >> $GITHUB_ENV
+
+        - if: env.UPDATE == 'true'
+          name: Find merge conflicts
+          run: |
+            {
+              CONFLICTS=$(git diff --name-only --diff-filter=U --relative)
+              echo 'CONFLICTS<<EOF'
+              echo EOF
+            } >> "$GITHUB_ENV"
+
+        - if: env.UPDATE == 'true'
+          name: Get commit compare URL
+          run: |
+            COMMIT=$(grep "_commit:" .copier-answers.yml | cut -f2 -d' ')
+            echo "COMPARE=${{ env.COMPARE }}...${COMMIT}" >> $GITHUB_ENV
+
+        - if: env.UPDATE == 'true'
+          id: create-pr
+          name: Create Pull Request
+          uses: peter-evans/create-pull-request@v7
+          with:
+            title: "Update against latest upstream template"
+            body: |
+              The upstream copier template has been updated!
+              This is an automated Pull Request, you should expect merge conflicts that you will need to resolve before you can accept this Pull Request.
+
+              You can compare the template changes here: <${{ env.COMPARE }}>
+
+        - if: env.UPDATE == 'true' && env.CONFLICTS != ''
+          name: Comment on PR with merge conflicts
+          uses: thollander/actions-comment-pull-request@v3
+          with:
+            message: |
+              <beep boop> I'm your friendly merge conflict finder.
+              I found conflicts in the following files:
+
+              ${{ env.CONFLICTS }}
+            pr-number: ${{ steps.create-pr.outputs.pull-request-number }}
+
