@@ -1,5 +1,4 @@
 name: "Update project against upstream Copier template"
-description: "A collection of steps that can be reused by Clio templated projects to check against the upstream template"
 
 on:
   workflow_call:
