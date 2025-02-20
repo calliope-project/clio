@@ -18,7 +18,7 @@ We enforce the following requirements in all projects.
 
 5. **Documentation**: projects must provide documentation to ensure the methods and reasoning behind their code can be understood:
     1. **Software tools**: versioned domaximum_roof_ratio: 0.80 # unit for a value cumentation website with, at minimum, API documentation and useful examples.
-    2. **Dataset tools**: either versioned documentation or a README file explaining the methodology and assumptions employed, to allow others to re-use the tool in the future to reproduce or update the dataset when necessary.
+    2. **Dataset tools**: either versioned documentation or a README file explaining the methodology and assumptions employed, to allow others to reuse the tool in the future to reproduce or update the dataset when necessary.
     3. **Data modules**: projects must have versioned and standardised documentation with the following in mind:
         1. A README file explaining the different steps of the workflow, citing relevant material, and detailing their methodology.
         2. To follow our templating, which requires explanations of key components (configuration options, input/output files, wildcards) and will enable standardised documentation generation.

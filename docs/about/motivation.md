@@ -1,6 +1,6 @@
 # Motivation
 
-In recent years, energy modelling research has made efforts to improve the transparency of the modelling process, with multiple open-source workflows surfacing as proposed approaches to salvage this gap. Unfortunately, such workflows do not always lead to scientific refinement, either due to lack of maintenance, due to model-specific characteristics impeding their re-use, or due an ever-growing complexity turning them into black boxes where assumptions are difficult to ascertain.
+In recent years, energy modelling research has made efforts to improve the transparency of the modelling process, with multiple open-source workflows surfacing as proposed approaches to salvage this gap. Unfortunately, such workflows do not always lead to scientific refinement, either due to lack of maintenance, due to model-specific characteristics impeding their reuse, or due an ever-growing complexity turning them into black boxes where assumptions are difficult to ascertain.
 
 ![Example workflow](./../images/not_modular.png)
 
