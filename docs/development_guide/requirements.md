@@ -18,7 +18,7 @@ We enforce the following requirements in all projects.
 
 5. **Documentation**: projects must provide documentation to ensure the methods and reasoning behind their code can be understood:
     1. **Software tools**: versioned domaximum_roof_ratio: 0.80 # unit for a value cumentation website with, at minimum, API documentation and useful examples.
-    2. **Dataset tools**: either versioned documentation or a README file explaining the methodology and assumptions employed, to allow others to re-use the tool in the future to reproduce or update the dataset when necessary.
+    2. **Dataset tools**: either versioned documentation or a README file explaining the methodology and assumptions employed, to allow others to reuse the tool in the future to reproduce or update the dataset when necessary.
     3. **Data modules**: projects must have versioned and standardised documentation with the following in mind:
         1. A README file explaining the different steps of the workflow, citing relevant material, and detailing their methodology.
         2. To follow our templating, which requires explanations of key components (configuration options, input/output files, wildcards) and will enable standardised documentation generation.
@@ -41,20 +41,47 @@ The following is a list of general advice on how to format files to help tools i
             maximum_roof_ratio: 0.80 # unit for a value
             ```
 
-2. **Tabular data**: we prefer [Apache Parquet](https://parquet.apache.org/) (.parquet) files due to their performance and storage efficiency, with the following requirements:
+2. **Tabular data**: we prefer [Apache Parquet](https://parquet.apache.org/) (.parquet) files due to their performance, storage efficiency and [metadata compatibility](https://parquet.apache.org/docs/file-format/metadata/), with the following requirements:
     1. Follow [tidy data](https://vita.had.co.nz/papers/tidy-data.pdf) principles (columns are variables, rows are observations) to make data machine-readable.
-    2. Specify units in the metadata under the `units` key, using `no_unit` for unitless cases. This simplifies parsing and makes it easier to use unit-checking tools like [pint](https://pint.readthedocs.io/en/stable/).
 
-        ???+ example "A tidy tabule with `unit` metadata"
+        ???+ example "Example of a tidy table"
 
             | year          | country_id       | shape_id         | demand       |
             |---------------|------------------|------------------|--------------|
             | 2020          | ITA              | North            | 4500         |
             | 2020          | ITA              | East             | 4800         |
-            | *units: year* | *units: no_unit* | *units: no_unit* | *units: mwh* |
+            | 2020          | ITA              | South            | 3000         |
+
+    2. Embed important metadata within the file, with at minimum the following values:
+        1. `units`: a dictionary specifying per-column units, using `no_unit` for unitless cases. Used to simplify parsing and enabling easier integration of unit-checking tools like [pint](https://pint.readthedocs.io/en/stable/).
+        2. `source`: a string specifying the source and/or author of a dataset.
+        3. `license`: a string specifying the license of the dataset.
+
+        ??? example "Embedding metadata in `pandas`"
+
+            `pandas` will automatically convert data in `df.attrs` into [file-level metadata](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.attrs.html#pandas.DataFrame.attrs) when saving to `.parquet`:
+
+            ```python
+            dataframe.attrs["units"] = {
+                "year": "yr",
+                "country_id": "no_unit",
+                "shape_id": "no_unit",
+                "demand": "mwh"
+                }
+            dataframe.attrs["source"] = "github.com/calliope-project/clio"
+            dataframe.attrs["license"] = "CC-BY-4.0"
+            dataframe.to_parquet('my_data.parquet')
+            ```
 
 3. **Raster data**: we prefer to use GeoTIFF (.tiff) files.
 4. **Polygon data**: we prefer [GeoParquet](https://geoparquet.org/) (.parquet) files.
+
+    ??? example "Example shapefiles in our standard format"
+
+        You can find some simple examples of our standard data format in the `clio/resources/shapes` folder.
+
+        --8<-- "resources/shapes/README.md:docs"
+
 5. **Gridded data**: we prefer to use [netCDF](https://www.unidata.ucar.edu/software/netcdf/) (.nc) files.
 
 ## Metadata conventions
@@ -73,7 +100,6 @@ The following is a list of general advice on how to format files to help tools i
         | DEU              | DE13             | NUTS2024         | 4500         |
         | DEU              | DE14             | NUTS2024         | 4800         |
         | ITA              | ITA0             | GADM4.1          | 20000        |
-        | *units: no_unit* | *units: no_unit* | *units: no_unit* | *units: mwh* |
 
 4. For spatial data:
     1. Use `longitude` | `latitude` to express position and avoid ambiguous values like `x` | `y`.

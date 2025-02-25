@@ -73,4 +73,3 @@ jobs:
 
               ${{ env.CONFLICTS }}
             pr-number: ${{ steps.create-pr.outputs.pull-request-number }}
-

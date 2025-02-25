@@ -28,4 +28,4 @@ If you don't, we recommend following `mamba`'s [installation advice](https://git
     ```
 
 You are ready to go!
-Please look into our general [requirements and conventions](./general_requirements.md#requirements-and-conventions) and familiarise yourself with the [templates](templates.md).
+Please look into our general [requirements and conventions](./requirements.md#requirements-and-conventions) and familiarise yourself with the [templates](templates.md).
