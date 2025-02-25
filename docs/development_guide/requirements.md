@@ -44,7 +44,7 @@ The following is a list of general advice on how to format files to help tools i
 2. **Tabular data**: we prefer [Apache Parquet](https://parquet.apache.org/) (.parquet) files due to their performance, storage efficiency and [metadata compatibility](https://parquet.apache.org/docs/file-format/metadata/), with the following requirements:
     1. Follow [tidy data](https://vita.had.co.nz/papers/tidy-data.pdf) principles (columns are variables, rows are observations) to make data machine-readable.
 
-        ???+ example "A tidy table"
+        ???+ example "Example of a tidy table"
 
             | year          | country_id       | shape_id         | demand       |
             |---------------|------------------|------------------|--------------|
@@ -57,7 +57,7 @@ The following is a list of general advice on how to format files to help tools i
         2. `source`: a string specifying the source and/or author of a dataset.
         3. `license`: a string specifying the license of the dataset.
 
-        ??? example "Example: embedding metadata in `pandas`"
+        ??? example "Embedding metadata in `pandas`"
 
             `pandas` will automatically convert data in `df.attrs` into [file-level metadata](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.attrs.html#pandas.DataFrame.attrs) when saving to `.parquet`:
 
@@ -75,6 +75,13 @@ The following is a list of general advice on how to format files to help tools i
 
 3. **Raster data**: we prefer to use GeoTIFF (.tiff) files.
 4. **Polygon data**: we prefer [GeoParquet](https://geoparquet.org/) (.parquet) files.
+
+    ??? example "Example shapefiles in our standard format"
+
+        You can find some simple examples of our standard data format in the `clio/resources/shapes` folder.
+
+        --8<-- "resources/shapes/README.md:docs"
+
 5. **Gridded data**: we prefer to use [netCDF](https://www.unidata.ucar.edu/software/netcdf/) (.nc) files.
 
 ## Metadata conventions
