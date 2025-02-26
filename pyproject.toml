@@ -20,11 +20,6 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = [
-    "mypy>=1.15.0",
-    "pytest>=8.3.4",
-    "ruff>=0.9.7",
-]
 geo = [
     "geopandas>=1.0.1",
     "pandera[geopandas]>=0.22.1",
@@ -66,3 +61,12 @@ convention = "google"
 [tool.ruff.lint.pycodestyle]
 max-doc-length = 200
 ignore-overlong-task-comments = true
+
+[dependency-groups]
+dev = [
+    "mkdocs-git-committers-plugin-2>=2.5.0",
+    "mkdocs-mermaid2-plugin>=1.2.1",
+    "mypy>=1.15.0",
+    "pytest>=8.3.4",
+    "ruff>=0.9.7",
+]
