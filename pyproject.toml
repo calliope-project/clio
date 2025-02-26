@@ -65,6 +65,7 @@ ignore-overlong-task-comments = true
 [dependency-groups]
 dev = [
     "mkdocs-git-committers-plugin-2>=2.5.0",
+    "mkdocs-material>=9.6.5",
     "mkdocs-mermaid2-plugin>=1.2.1",
     "mypy>=1.15.0",
     "pytest>=8.3.4",
