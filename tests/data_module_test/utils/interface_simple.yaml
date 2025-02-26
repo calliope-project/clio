@@ -1,0 +1,8 @@
+resources:
+  user:
+    'table.csv': A table with some type of data.
+    'text.txt': A text file with more data.
+  automatic:
+    'download.nc': A downloaded file.
+results:
+    'stuff.parquet': Module results.

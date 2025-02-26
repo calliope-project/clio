@@ -1,0 +1,13 @@
+resources:
+  user:
+    'table_{foo}.csv': A table with some type of data.
+    'text_{foo}.txt': A text file with more data.
+  automatic:
+    'download_{bar}.nc': A downloaded file.
+results:
+  'stuff_{foobar}.parquet': Module results.
+  'more_stuff_{foo}_{foobar}.nc': More module results.
+wildcards:
+  foo: does a thing
+  bar: does something else
+  foobar: extra thing

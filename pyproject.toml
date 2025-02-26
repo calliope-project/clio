@@ -1,0 +1,108 @@
+[project]
+authors = [
+  { name = "clio-tools contributors listed in AUTHORS" },
+]
+classifiers = [
+  # How mature is this project? Common values are
+  #   3 - Alpha
+  #   4 - Beta
+  #   5 - Production/Stable
+  "Development Status :: 3 - Alpha",
+
+  # Indicate who your project is intended for
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved",
+  "Topic :: Scientific/Engineering",
+
+  # Specify the Python versions you support here.
+  "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "numpy>=2.2.3",
+    "pandas>=2.2.3",
+    "pandera>=0.22.1",
+    "pydantic>=2.10.6",
+    "pyyaml>=6.0.2",
+]
+description = "Tools and utilities for clio components"
+dynamic = ["version"]
+keywords = ["energy modelling", "workflows", "integration"]
+license = {file = "LICENSE"}
+name = "clio-tools"
+readme = "README.md"
+requires-python = ">=3.12"
+
+[dependency-groups]
+dev = [
+    "hatch-vcs>=0.4.0",
+    "hatchling>=1.27.0",
+    "mkdocs-git-committers-plugin-2>=2.5.0",
+    "mkdocs-material>=9.6.5",
+    "mkdocs-mermaid2-plugin>=1.2.1",
+    "mypy>=1.15.0",
+    "pytest>=8.3.4",
+    "ruff>=0.9.7",
+]
+
+[project.urls]
+changelog = "https://github.com/calliope-project/clio/CHANGELOG"
+documentation = "https://clio.readthedocs.io/"
+homepage = "https://callio.pe"
+issues = "https://github.com/calliope-project/clio/issues"
+repository = "https://github.com/calliope-project/clio"
+website = "https://github.com/calliope-project/clio/"
+
+# ---
+# Dev tooling
+# ---
+
+[tool.mypy]
+disable_error_code = ["import-untyped"]
+files = "src/"
+
+[tool.ruff.format]
+exclude = [".*.egg-info", "requirements/**"]
+skip-magic-trailing-comma = true
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "Q", "W", "D", "PT", "UP"]
+# line too long
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+split-on-trailing-comma = false
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402", "F401", "D104"]
+
+[tool.ruff.lint.flake8-quotes]
+docstring-quotes = "double"
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.pycodestyle]
+max-doc-length = 200
+ignore-overlong-task-comments = true
+
+[tool.uv]
+required-version = ">=0.6.2"
+
+# ---
+# Build
+# ---
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/clio_tools/_version.py"
+
+[tool.hatch.build.targets.sdist]
+include = ["src/clio_tools"]
