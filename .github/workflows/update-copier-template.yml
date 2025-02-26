@@ -21,7 +21,7 @@ jobs:
           with:
             micromamba-version: '1.5.10-0'
             environment-name: ${{ github.event.repository.name }}-copier
-            create-args: copier python=3.11
+            create-args: copier python=3.12
             post-cleanup: all
             cache-environment: true
 

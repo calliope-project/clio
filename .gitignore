@@ -7,13 +7,16 @@
 **/.vscode
 .$*
 
-### Byte-compiled files
-__pycache__
-*.pyc
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
 
-### Snakemake
-.snakemake/
-gurobi.log
+# Virtual environments
+.venv
 
 ### Notebooks
 .ipynb_checkpoints

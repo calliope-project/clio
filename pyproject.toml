@@ -1,0 +1,68 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "clio-tools"
+version = "0.1.0"
+description = "Tools and utilities for clio components"
+readme = "README.md"
+authors = [
+  { name = "clio-tools contributors listed in AUTHORS" },
+]
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2.2.3",
+    "pandas>=2.2.3",
+    "pandera>=0.22.1",
+    "pydantic>=2.10.6",
+    "pyyaml>=6.0.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "mypy>=1.15.0",
+    "pytest>=8.3.4",
+    "ruff>=0.9.7",
+]
+geo = [
+    "geopandas>=1.0.1",
+    "pandera[geopandas]>=0.22.1",
+]
+
+[project.urls]
+website = "https://github.com/calliope-project/clio/"
+repository = "https://github.com/calliope-project/clio"
+changelog = "https://github.com/calliope-project/clio/CHANGELOG"
+
+[tool.mypy]
+disable_error_code = ["import-untyped"]
+files = "src/"
+
+[tool.ruff.format]
+exclude = [".*.egg-info", "requirements/**"]
+skip-magic-trailing-comma = true
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "Q", "W", "D", "PT", "UP"]
+# line too long
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+split-on-trailing-comma = false
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402", "F401", "D104"]
+
+[tool.ruff.lint.flake8-quotes]
+docstring-quotes = "double"
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.pycodestyle]
+max-doc-length = 200
+ignore-overlong-task-comments = true
