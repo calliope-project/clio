@@ -32,6 +32,18 @@ name = "clio-tools"
 readme = "README.md"
 requires-python = ">=3.12"
 
+[dependency-groups]
+dev = [
+    "hatch-vcs>=0.4.0",
+    "hatchling>=1.27.0",
+    "mkdocs-git-committers-plugin-2>=2.5.0",
+    "mkdocs-material>=9.6.5",
+    "mkdocs-mermaid2-plugin>=1.2.1",
+    "mypy>=1.15.0",
+    "pytest>=8.3.4",
+    "ruff>=0.9.7",
+]
+
 [project.urls]
 changelog = "https://github.com/calliope-project/clio/CHANGELOG"
 documentation = "https://clio.readthedocs.io/"
@@ -39,6 +51,10 @@ homepage = "https://callio.pe"
 issues = "https://github.com/calliope-project/clio/issues"
 repository = "https://github.com/calliope-project/clio"
 website = "https://github.com/calliope-project/clio/"
+
+# ---
+# Dev tooling
+# ---
 
 [tool.mypy]
 disable_error_code = ["import-untyped"]
@@ -72,20 +88,11 @@ convention = "google"
 max-doc-length = 200
 ignore-overlong-task-comments = true
 
-[dependency-groups]
-dev = [
-    "hatch-vcs>=0.4.0",
-    "hatchling>=1.27.0",
-    "mkdocs-git-committers-plugin-2>=2.5.0",
-    "mkdocs-material>=9.6.5",
-    "mkdocs-mermaid2-plugin>=1.2.1",
-    "mypy>=1.15.0",
-    "pytest>=8.3.4",
-    "ruff>=0.9.7",
-]
+[tool.uv]
+required-version = ">=0.6.2"
 
 # ---
-# Build settings
+# Build
 # ---
 [build-system]
 requires = ["hatchling", "hatch-vcs"]
