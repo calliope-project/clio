@@ -30,13 +30,6 @@ class ModuleInterface(BaseModel):
     wildcards: dict[str, str] = Field(default_factory=dict)
     """
     Module wildcards. If provided, these must be present in the keys of either module resources or results.
-    E.g.:
-
-    ```yaml
-    results:
-        'foo_{bar}.png': an output image.
-    wildcards:
-        bar: will alter module behaviour.
     """
 
     @classmethod
