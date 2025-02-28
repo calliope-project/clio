@@ -3,7 +3,7 @@
 import re
 from pathlib import Path
 from textwrap import dedent
-from typing import Self
+from typing import Self  # type: ignore
 
 import networkx as nx
 import yaml
