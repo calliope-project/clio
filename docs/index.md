@@ -9,10 +9,6 @@ In essence, we wish to turn very complex models that are hard to maintain and re
 
 ![modules](./images/modular.png)
 
-## For users
-
-Feel free to check our [user guide](./user_guide/getting_started.md)!
-
 ## For developers
 
 Please check out our [development guide](./development_guide/getting_started.md).
