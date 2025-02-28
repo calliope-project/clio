@@ -74,7 +74,7 @@ class ModuleInterface(BaseModel):
 
     def to_mermaid_flowchart(self, name: str) -> str:
         """Convert to a mermaid diagram."""
-        mermaid_txt = dedent(f"""
+        mermaid_txt = dedent(f"""\
             ---
             title: {name}
             ---
@@ -96,7 +96,7 @@ class ModuleInterface(BaseModel):
 
         # Generate results part
         results_txt = "\n    ".join(self.results)
-        mermaid_txt += f"""M --> O1("`**results**\n    {results_txt}\n    `")\n"""
+        mermaid_txt += f"""M --> O1("`**results**\n    {results_txt}\n    `")"""
         return mermaid_txt
 
 

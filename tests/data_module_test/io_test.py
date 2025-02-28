@@ -69,7 +69,7 @@ class TestModuleInterface:
 
     def test_mermaid_flow_diagram_text(self, interface_w_wilcards):
         """The generated diagram should be correct and use 4 space indentation."""
-        expected = dedent(r"""
+        expected = dedent("""\
             ---
             title: interface_wildcard.yaml
             ---
@@ -85,8 +85,7 @@ class TestModuleInterface:
             M --> O1("`**results**
                 stuff_{foobar}.parquet
                 more_stuff_{foo}_{foobar}.nc
-                `")
-            """)
+                `")""")
         interface = ModuleInterface(**interface_w_wilcards)
         generated = interface.to_mermaid_flowchart("interface_wildcard.yaml")
         assert expected == generated
