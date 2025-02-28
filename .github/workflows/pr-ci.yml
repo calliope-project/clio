@@ -16,7 +16,7 @@ jobs:
         with:
           uv-file: "pyproject.toml"
       - name: Install dependencies
-        run: uv sync
+        run: uv sync --all-extras
       - name: Build package
         run: uv build
       - name: Run tests
