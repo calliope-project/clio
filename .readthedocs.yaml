@@ -13,10 +13,8 @@ build:
       - asdf global pixi latest
     install:
       - pixi install --all
-    build:
-         html:
-            - pixi run --environment dev mkdocs build -d $READTHEDOCS_OUTPUT/html
-    # - UV_PROJECT_ENVIRONMENT=$READTHEDOCS_VIRTUALENV_PATH uv sync --all-extras
+    post_install:
+      - pixi shell --environment dev
 
 mkdocs:
   configuration: mkdocs.yaml
