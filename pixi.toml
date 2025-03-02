@@ -1,0 +1,43 @@
+[workspace]
+channels = [
+  "https://prefix.dev/pixi-build-backends",
+  "conda-forge",
+  "bioconda"
+]
+platforms = ["win-64", "linux-64", "osx-arm64", "osx-64"]
+preview = ["pixi-build"]
+
+[dependencies]
+clio_tools = { path = "." }
+pyyaml = ">=6.0.2"
+pydot = ">=3.0.4"
+pydantic = ">=2.10.6"
+networkx = ">=3.4.2"
+graphviz = ">=12.2.1"
+
+[package]
+name = "clio_tools"
+version = "0.1.0"
+
+[package.build]
+backend = { name = "pixi-build-python", version = "0.1.*" }
+channels = [
+  "https://prefix.dev/pixi-build-backends",
+  "https://prefix.dev/conda-forge",
+]
+
+[package.host-dependencies]
+hatchling = ">=1.27"
+
+[feature.dev.dependencies]
+mypy = ">=1.15"
+pytest = ">=8.3.4"
+ruff = ">=0.9.7"
+mkdocs-material = ">=9.6.5"
+
+[feature.dev.pypi-dependencies]
+mkdocs-git-committers-plugin-2 = ">=2.5.0"
+mkdocs-mermaid2-plugin = ">=1.2.1"
+
+[environments]
+dev = ["dev"]
