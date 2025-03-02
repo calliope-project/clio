@@ -7,9 +7,16 @@ build:
   tools:
     python: "3.12"
   jobs:
-    post_install:
-    - pip install uv
-    - UV_PROJECT_ENVIRONMENT=$READTHEDOCS_VIRTUALENV_PATH uv sync --all-extras
+    create_environment:
+      - asdf plugin add pixi
+      - asdf install pixi latest
+      - asdf global pixi latest
+    install:
+      - pixi install --all
+    build:
+         html:
+            - pixi run --environment dev mkdocs build -d $READTHEDOCS_OUTPUT/html
+    # - UV_PROJECT_ENVIRONMENT=$READTHEDOCS_VIRTUALENV_PATH uv sync --all-extras
 
 mkdocs:
   configuration: mkdocs.yaml
