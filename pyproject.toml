@@ -73,7 +73,7 @@ ignore-overlong-task-comments = true
 # Build
 # ---
 
-[tool.pixi.workspace]
+[tool.pixi.project]
 channels = [
   "conda-forge",
   "bioconda"
@@ -95,6 +95,8 @@ pyyaml = ">=6.0.2"
 [tool.pixi.feature.docs.dependencies]
 mkdocs-material = ">=9.6.5"
 mkdocs-git-committers-plugin-2 = ">=2.5"
+mkdocstrings = ">=0.28.2"
+mkdocstrings-python = ">=1.16.2"
 
 [tool.pixi.feature.docs.pypi-dependencies]
 mkdocs-mermaid2-plugin = ">=1.2.1"
