@@ -29,9 +29,5 @@ temp/
 # Mkdocs
 .cache/
 
-# pixi environments
-.pixi
-*.egg-info
-
 # Docs
 site
