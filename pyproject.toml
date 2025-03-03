@@ -18,7 +18,7 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
 ]
 description = "Tools and utilities for clio components"
-version = "0.1.0"
+version = "2025.03.03"
 keywords = ["energy modelling", "workflows", "integration"]
 license = {file = "LICENSE"}
 name = "clio-tools"
