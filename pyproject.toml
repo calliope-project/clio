@@ -93,9 +93,6 @@ numpy = ">=2.2.3"
 pandas = ">=2.2.3"
 pandera = ">=0.22.1"
 
-[tool.pixi.tasks]
-configure_graphviz = "dot -c"
-
 [tool.pixi.feature.dev.dependencies]
 mypy = ">=1.15"
 pytest = ">=8.3.4"
@@ -108,6 +105,7 @@ mkdocs-material = ">=9.6.5"
 mkdocs-mermaid2-plugin = ">=1.2.1"
 
 [tool.pixi.feature.dev.tasks]
+configure_graphviz = "dot -c"
 test = {cmd = "pytest", depends-on = ["configure_graphviz"]}
 docs = {cmd = "mkdocs serve", depends-on = ["configure_graphviz"]}
 
