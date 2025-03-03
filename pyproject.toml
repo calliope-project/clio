@@ -17,16 +17,6 @@ classifiers = [
   # Specify the Python versions you support here.
   "Programming Language :: Python :: 3.12",
 ]
-dependencies = [
-    "graphviz>=0.20.3",
-    "networkx>=3.4.2",
-    "numpy>=2.2.3",
-    "pandas>=2.2.3",
-    "pandera>=0.22.1",
-    "pydantic>=2.10.6",
-    "pydot>=3.0.4",
-    "pyyaml>=6.0.2",
-]
 description = "Tools and utilities for clio components"
 dynamic = ["version"]
 keywords = ["energy modelling", "workflows", "integration"]
@@ -34,18 +24,6 @@ license = {file = "LICENSE"}
 name = "clio-tools"
 readme = "README.md"
 requires-python = ">=3.12"
-
-[dependency-groups]
-dev = [
-    "hatch-vcs>=0.4.0",
-    "hatchling>=1.27.0",
-    "mkdocs-git-committers-plugin-2>=2.5.0",
-    "mkdocs-material>=9.6.5",
-    "mkdocs-mermaid2-plugin>=1.2.1",
-    "mypy>=1.15.0",
-    "pytest>=8.3.4",
-    "ruff>=0.9.7",
-]
 
 [project.urls]
 changelog = "https://github.com/calliope-project/clio/CHANGELOG"
@@ -91,21 +69,47 @@ convention = "google"
 max-doc-length = 200
 ignore-overlong-task-comments = true
 
-[tool.uv]
-required-version = ">=0.6.2"
-
 # ---
 # Build
 # ---
-[build-system]
-requires = ["hatchling", "hatch-vcs"]
-build-backend = "hatchling.build"
 
-[tool.hatch.version]
-source = "vcs"
+[tool.pixi.workspace]
+channels = [
+  "https://prefix.dev/pixi-build-backends",
+  "conda-forge",
+  "bioconda"
+]
+platforms = ["osx-arm64", "osx-64", "linux-64", "win-64"]
 
-[tool.hatch.build.hooks.vcs]
-version-file = "src/clio_tools/_version.py"
+[tool.pixi.pypi-dependencies]
+clio_tools = { path = ".", editable=true}
 
-[tool.hatch.build.targets.sdist]
-include = ["src/clio_tools"]
+[tool.pixi.dependencies]
+pyyaml = ">=6.0.2"
+pydantic = ">=2.10.6"
+pydot = ">=3.0.4"
+networkx = ">=3.4.2"
+numpy = ">=2.2.3"
+pandas = ">=2.2.3"
+pandera = ">=0.22.1"
+
+[tool.pixi.tasks]
+configure_graphviz = "dot -c"
+
+[tool.pixi.feature.dev.dependencies]
+mypy = ">=1.15"
+pytest = ">=8.3.4"
+ruff = ">=0.9.7"
+mkdocs-material = ">=9.6.5"
+mkdocs-git-committers-plugin-2 = ">=2.5"
+
+[tool.pixi.feature.dev.pypi-dependencies]
+mkdocs-material = ">=9.6.5"
+mkdocs-mermaid2-plugin = ">=1.2.1"
+
+[tool.pixi.feature.dev.tasks]
+test = {cmd = "pytest", depends-on = ["configure_graphviz"]}
+docs = {cmd = "mkdocs serve", depends-on = ["configure_graphviz"]}
+
+[tool.pixi.environments]
+dev = ["dev"]
