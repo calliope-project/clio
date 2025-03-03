@@ -32,3 +32,6 @@ temp/
 # pixi environments
 .pixi
 *.egg-info
+
+# Docs
+site
