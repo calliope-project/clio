@@ -9,7 +9,7 @@ build:
     python: mambaforge-4.10
   jobs:
     pre_create_environment:
-      - curl -fsSL https://pixi.sh/install.sh | bash
+      - mamba install pixi
       - pixi project export conda-environment -e dev environment.yml
 
 mkdocs:
