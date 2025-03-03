@@ -1502,7 +1502,7 @@ packages:
 - pypi: .
   name: clio-tools
   version: 0.0.0
-  sha256: a1e0694788d148408193569b06207267988a889bfc93803ca6e2691548a369f6
+  sha256: 4bef2363d5d9f15c1dad5578d9d3d6f26221d5600f8f2a4dbead7bdd3e97011d
   requires_python: '>=3.12'
   editable: true
 - conda: https://conda.anaconda.org/conda-forge/noarch/colorama-0.4.6-pyhd8ed1ab_1.conda
