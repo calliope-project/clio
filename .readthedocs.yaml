@@ -1,7 +1,8 @@
 # Read the Docs configuration file
 # See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
 version: 2
-
+conda:
+  environment: environment.yml
 build:
   os: ubuntu-22.04
   tools:
@@ -9,8 +10,7 @@ build:
   jobs:
     pre_create_environment:
       - conda install pixi
-    create_environment:
-      - pixi shell -e dev
+      - pixi project export conda-environment -e dev environment.yml
 
 mkdocs:
   configuration: mkdocs.yaml
