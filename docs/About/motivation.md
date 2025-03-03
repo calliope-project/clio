@@ -4,6 +4,8 @@ In recent years, energy modelling research has made efforts to improve the trans
 
 ![Example workflow](./../images/not_modular.png)
 
+## Challenges
+
 Although each model has its own needs and characteristics, the data needed by them is often similar (demand profiles, existing capacity, land availability limits, etc).
 The current approach of model-specific workflows hampers progress in two ways.
 
@@ -12,8 +14,11 @@ The current approach of model-specific workflows hampers progress in two ways.
 
 ![Bloat example](images/bloat-growth-problem.png)
 
-Energy research is hardly the only field were this is a problem: bioinformatics and atmospheric modelling face similar problems.
-This project aims to outline a framework for a modular approach to generating the constituent data for energy system models as well tying them together into a feature-complete, ready-to-run model. We focus in particular on:
+## Our solution
+
+This project aims to outline a framework for a modular approach to generating the constituent data for energy system models as well tying them together into a feature-complete, ready-to-run model.
+
+We focus in particular on:
 
 - Separating valuable software tools, datasets, and data processing steps into modular components that improve their potential reusability. Defining a set of requirements that increase the cross-compatibility and ease of understanding of software tools, datasets, and data processing steps in a model-agnostic way, following the standards of FAIR science.
 - Reducing the duplication of work by allowing a mix-and-match approach to consuming data from independently maintained and updated modular data generation workflows.

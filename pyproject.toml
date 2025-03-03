@@ -1,0 +1,124 @@
+[project]
+authors = [
+  { name = "clio-tools contributors listed in AUTHORS" },
+]
+classifiers = [
+  # How mature is this project? Common values are
+  #   3 - Alpha
+  #   4 - Beta
+  #   5 - Production/Stable
+  "Development Status :: 3 - Alpha",
+
+  # Indicate who your project is intended for
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved",
+  "Topic :: Scientific/Engineering",
+
+  # Specify the Python versions you support here.
+  "Programming Language :: Python :: 3.12",
+]
+description = "Tools and utilities for clio components"
+version = "2025.03.03"
+keywords = ["energy modelling", "workflows", "integration"]
+license = {file = "LICENSE"}
+name = "clio-tools"
+readme = "README.md"
+requires-python = ">=3.12"
+
+[project.urls]
+changelog = "https://github.com/calliope-project/clio/CHANGELOG"
+documentation = "https://clio.readthedocs.io/"
+homepage = "https://callio.pe"
+issues = "https://github.com/calliope-project/clio/issues"
+repository = "https://github.com/calliope-project/clio"
+website = "https://github.com/calliope-project/clio/"
+
+# ---
+# Dev tooling
+# ---
+
+[tool.mypy]
+disable_error_code = ["import-untyped"]
+files = "src/"
+
+[tool.ruff.format]
+exclude = [".*.egg-info", "requirements/**"]
+skip-magic-trailing-comma = true
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "Q", "W", "D", "PT", "UP"]
+# line too long
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+split-on-trailing-comma = false
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402", "F401", "D104"]
+
+[tool.ruff.lint.flake8-quotes]
+docstring-quotes = "double"
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.pycodestyle]
+max-doc-length = 200
+ignore-overlong-task-comments = true
+
+# ---
+# Build
+# ---
+
+[tool.pixi.project]
+channels = [
+  "conda-forge",
+  "bioconda"
+]
+platforms = ["osx-arm64", "osx-64", "linux-64", "win-64"]
+
+[tool.pixi.pypi-dependencies]
+clio_tools = { path = ".", editable=true}
+
+[tool.pixi.dependencies]
+networkx = ">=3.4.2"
+numpy = ">=2.2.3"
+pandas = ">=2.2.3"
+pandera = ">=0.22.1"
+pydantic = ">=2.10.6"
+pydot = ">=3.0.4"
+pyyaml = ">=6.0.2"
+
+[tool.pixi.feature.docs.dependencies]
+mkdocs-material = ">=9.6.5"
+mkdocs-git-committers-plugin-2 = ">=2.5"
+mkdocstrings = ">=0.28.2"
+mkdocstrings-python = ">=1.16.2"
+
+[tool.pixi.feature.docs.pypi-dependencies]
+mkdocs-mermaid2-plugin = ">=1.2.1"
+
+[tool.pixi.feature.style.dependencies]
+mypy = ">=1.15"
+ruff = ">=0.9.7"
+pre-commit = ">=4.1.0"
+
+[tool.pixi.feature.test.dependencies]
+pytest = ">=8.3.4"
+
+[tool.pixi.feature.test.tasks]
+configure_graphviz = "dot -c"
+test = {cmd = "pytest", depends-on = ["configure_graphviz"]}
+
+[tool.pixi.feature.docs.tasks]
+build-docs = {cmd = "mkdocs build"}
+serve-docs = {cmd = "mkdocs serve"}
+
+[tool.pixi.feature.style.tasks]
+style = {cmd = "pre-commit run --all-files"}
+
+[tool.pixi.environments]
+dev = ["docs", "style", "test"]

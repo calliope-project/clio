@@ -11,4 +11,4 @@ In essence, we wish to turn very complex models that are hard to maintain and re
 
 ## For developers
 
-Please check out our [development guide](./development_guide/getting_started.md).
+Please check out our [development guide](./Guidelines/getting_started.md).

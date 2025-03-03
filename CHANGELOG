@@ -1,0 +1,8 @@
+# CHANGELOG
+
+## IN DEVELOPMENT
+
+### Added
+
+- Data module utility functions for `INTERFACE.yaml` files.
+- Modular graphs generation for snakemake `--rulegraph` DOT files.

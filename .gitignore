@@ -7,13 +7,17 @@
 **/.vscode
 .$*
 
-### Byte-compiled files
-__pycache__
-*.pyc
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+src/clio_tools/_version.py
 
-### Snakemake
-.snakemake/
-gurobi.log
+# Virtual environments
+.venv
 
 ### Notebooks
 .ipynb_checkpoints
@@ -24,3 +28,6 @@ temp/
 
 # Mkdocs
 .cache/
+
+# Docs
+site

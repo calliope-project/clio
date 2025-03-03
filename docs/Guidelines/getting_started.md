@@ -1,6 +1,6 @@
 # How to get started
 
-Make sure to read about [our framework](../about/our_framework.md) to familiarise yourself with each type of component
+Make sure to read about [our framework](../About/our_framework.md) to familiarise yourself with each type of component
 and decide the type of project that best fits your goals.
 
 We assume you already have `conda` or `mamba` installed in your system.
@@ -19,13 +19,13 @@ If you don't, we recommend following `mamba`'s [installation advice](https://git
     copier copy 'https://github.com/calliope-project/data-module-template'
     ```
 
-3. You'll be prompted with some questions. After answering them, `copier` will auto-generate the module for you!
+3. You'll be prompted with some questions. After answering them, `copier` will auto-generate the module for you.
 
     ```html
-    🎤 Please enter the name of your tool in snake_case.
+    >🎤 Please enter the name of your tool in snake_case.
     my_new_module
     ...
     ```
 
 You are ready to go!
-Please look into our general [requirements and conventions](./requirements.md#requirements-and-conventions) and familiarise yourself with the [templates](templates.md).
+Please look into our general [requirements and conventions](./requirements.md#requirements-and-conventions) and familiarise yourself with the [templates](./templates.md).
