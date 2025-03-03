@@ -6,11 +6,10 @@ Please read all about it in our [documentation](https://clio.readthedocs.io/en/s
 
 ## Development
 
-Install [`pixi`](https://pixi.sh/latest/) and run:
+Install [`uv`](https://docs.astral.sh/uv/) and run:
 
-```shell
-git clone git@github.com:calliope-project/clio.git
-cd clio
-pixi install --all  # Installs both default and development environments
-pixi run --environment dev pytest  # Execute a commands for a particular environment
+```bash
+git clone git@github.com:calliope-project/clio-tools.git
+cd clio-tools
+uv sync --all-extras  # Installs both user and developer dependencies
 ```
