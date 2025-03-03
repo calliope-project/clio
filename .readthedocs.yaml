@@ -1,16 +1,18 @@
 # Read the Docs configuration file
 # See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
 version: 2
-conda:
-  environment: environment.yml
+
 build:
   os: ubuntu-22.04
   tools:
-    python: mambaforge-4.10
-  jobs:
-    pre_create_environment:
-      - mamba install pixi
-      - pixi project export conda-environment -e dev environment.yml
+    python: "3.12"
+  commands:
+    - asdf plugin add pixi
+    - asdf install pixi latest
+    - asdf global pixi latest
+    - pixi run build-docs
+    - mkdir -p $READTHEDOCS_OUTPUT/html/
+    - cp -r docs/_build/html/** $READTHEDOCS_OUTPUT/html/
 
 mkdocs:
   configuration: mkdocs.yaml

@@ -80,13 +80,6 @@ channels = [
   "bioconda"
 ]
 platforms = ["osx-arm64", "osx-64", "linux-64", "win-64"]
-preview = ["pixi-build"]
-
-[tool.pixi.package.build]
-backend = { name = "pixi-build-python", version = "0.1.*" }
-
-[tool.pixi.package.host-dependencies]
-hatchling = ">=1.27"
 
 [tool.pixi.pypi-dependencies]
 clio_tools = { path = ".", editable=true}
@@ -114,7 +107,8 @@ mkdocs-mermaid2-plugin = ">=1.2.1"
 [tool.pixi.feature.dev.tasks]
 configure_graphviz = "dot -c"
 test = {cmd = "pytest", depends-on = ["configure_graphviz"]}
-docs = {cmd = "mkdocs serve", depends-on = ["configure_graphviz"]}
+build-docs = {cmd = "mkdocs build", depends-on = ["configure_graphviz"]}
+serve-docs = {cmd = "mkdocs serve", depends-on = ["configure_graphviz"]}
 
 [tool.pixi.environments]
 dev = ["dev"]
