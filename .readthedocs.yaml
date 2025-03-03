@@ -6,13 +6,15 @@ build:
   os: ubuntu-22.04
   tools:
     python: "3.12"
-  commands:
-    - asdf plugin add pixi
-    - asdf install pixi latest
-    - asdf global pixi latest
-    - pixi run build-docs
-    - mkdir -p $READTHEDOCS_OUTPUT/html/
-    - cp -r docs/_build/html/** $READTHEDOCS_OUTPUT/html/
+  jobs:
+    create_environment:
+      - asdf plugin add pixi
+      - asdf install pixi latest
+      - asdf global pixi latest
+    install:
+      - pixi install --all
+    post_install:
+      - pixi shell --environment dev
 
 mkdocs:
   configuration: mkdocs.yaml
