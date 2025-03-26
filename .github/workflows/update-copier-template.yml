@@ -67,6 +67,7 @@ jobs:
               This is an automated Pull Request, you should expect merge conflicts that you will need to resolve before you can accept this Pull Request.
 
               You can compare the template changes here: <${{ env.COMPARE }}>
+            base: develop
 
         - if: env.UPDATE == 'true' && env.CONFLICTS != ''
           name: Comment on PR with merge conflicts
