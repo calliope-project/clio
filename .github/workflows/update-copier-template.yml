@@ -31,6 +31,11 @@ jobs:
             SRC=$(grep "_src_path:" .copier-answers.yml | cut -f2 -d' ' | cut -f1 -f2 -d'.')
             echo "COMPARE=${SRC}/compare/${SRC}" >> $GITHUB_ENV
 
+        - name: Add dummy GitHub credentials
+          run: |
+            git config --global user.name Copier update
+            git config --global user.email check@dummy.bot.com
+
         - run: copier update -A -f
 
         - id: requires-update
