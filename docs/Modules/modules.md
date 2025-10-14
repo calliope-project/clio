@@ -10,4 +10,4 @@ Currently, the data the following data modules are available.
 - [module_powerplants](https://github.com/calliope-project/module_powerplants)
 - [module_pv_wind](https://github.com/calliope-project/module_pv_wind)
 
-If you think that an important topic is not covered by the modules above, feel free to develop your own module! Please read the [developer guidelines](../Developer_guidelines/getting_started.md) to learn how to get started. Our templates and recommended good practices are ready to help you, so your module will work smoothly from the start. 
+If you think that an important topic is not covered by the modules above, feel free to develop your own module! Please read the [developer guidelines](../Developer_guidelines/getting_started.md) to learn how to get started. Our templates and recommended good practices are ready to help you, so your module will work smoothly from the start.
