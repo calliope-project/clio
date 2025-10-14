@@ -1,6 +1,6 @@
 # Modules
 
-Currently, the data the following data modules are available.
+Currently, the following data modules are available.
 
 !!! note "More extensive docs are coming soon"
 
