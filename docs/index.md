@@ -9,6 +9,8 @@ In essence, we wish to turn very complex models that are hard to maintain and re
 
 ![modules](./images/modular.png)
 
+Learn about the full list of available [modules](./Modules/modules.md).
+
 ## For developers
 
-Please check out our [development guide](./Guidelines/getting_started.md).
+If you want to start creating your own data modules, check out our [developer guidelines](./Developer_guidelines/getting_started.md).

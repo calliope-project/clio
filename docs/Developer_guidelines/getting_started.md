@@ -1,6 +1,6 @@
 # How to get started
 
-Make sure to read about [our framework](../About/our_framework.md) to familiarise yourself with each type of component
+Make sure to read about [our framework](../Background/our_framework.md) to familiarise yourself with each type of component
 and decide the type of project that best fits your goals.
 
 We assume you already have `conda` or `mamba` installed in your system.
