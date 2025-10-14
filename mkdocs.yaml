@@ -93,4 +93,18 @@ plugins:
             - https://pandas.pydata.org/docs/objects.inv
             - https://docs.xarray.dev/en/stable/objects.inv
 
+nav:
+  - Home: index.md
+  - Background:
+    - Background/motivation.md
+    - Background/our_framework.md
+  - Modules: Modules/modules.md
+  - Developer guidelines:
+    - Developer_guidelines/getting_started.md
+    - Developer_guidelines/requirements.md
+    - Developer_guidelines/templates.md
+  - API clio_tools:
+    - clio_tools_API/index.md
+    - clio_tools_API/data_modules.md
+
 copyright: Copyright &copy; since 2025 <a href="https://github.com/calliope-project/clio/blob/main/AUTHORS">clio contributors</a> (MIT licensed)
