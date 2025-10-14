@@ -4,7 +4,7 @@ Currently, the data the following data modules are available.
 
 !!! note "More extensive docs are coming soon"
 
-    The modules are currently in active development. A more detailled documentation showing the capability of each module will be coming soon.
+    The modules are currently in active development. A more detailed documentation showing the capability of each module will be coming soon.
 
 - [module_area_potentials](https://github.com/calliope-project/module_area_potentials)
 - [module_demand_electricity](https://github.com/calliope-project/module_demand_electricity)
