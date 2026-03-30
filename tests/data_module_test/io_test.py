@@ -41,9 +41,8 @@ class TestModuleInterface:
         data = load_yaml(path_interface_test)
         interface = ModuleInterface(**data)
         mermaid_txt = interface.to_mermaid_flowchart(path_interface_test.name)
-        assert all([i in mermaid_txt for i in interface.resources.user])
-        assert all([i in mermaid_txt for i in interface.resources.automatic])
-        assert all([i in mermaid_txt for i in interface.results])
+        assert all([i in mermaid_txt for i in interface.pathvars.user_resources])
+        assert all([i in mermaid_txt for i in interface.pathvars.results])
 
     @pytest.fixture
     def interface_w_wilcards(self):
@@ -55,15 +54,13 @@ class TestModuleInterface:
         del interface_w_wilcards["wildcards"]
         with pytest.raises(
             ValidationError,
-            match="Wildcards not specified in 'resources' or 'results':",
+            match="Wildcards not specified in 'user_resources' or 'results' pathvars:",
         ):
             ModuleInterface(**interface_w_wilcards)
 
     def test_wildcard_not_in_filename(self, interface_w_wilcards):
         """All values in the wildcards section should appear in filenames at least once."""
-        interface_w_wilcards["resources"]["automatic"] = {
-            "stuff.tiff": "Without wildcard."
-        }
+        interface_w_wilcards["pathvars"]["user_resources"]["text"]["default"] = "<resources>/user/no_wildcard.txt"
         with pytest.raises(ValidationError, match="Unused wildcards found"):
             ModuleInterface(**interface_w_wilcards)
 
@@ -71,23 +68,20 @@ class TestModuleInterface:
         """The generated diagram should be correct and use 4 space indentation."""
         expected = dedent("""\
             ---
-            title: interface_wildcard.yaml
+            title: biomass
             ---
             flowchart LR
-            M((interface_wildcard.yaml))
+            M((biomass))
             C1[/"`**user**
-                table_{foo}.csv
-                text_{foo}.txt
-                `"/] --> M
-            C2[/"`**automatic**
-                download_{bar}.nc
+                table
+                text
                 `"/] --> M
             M --> O1("`**results**
-                stuff_{foobar}.parquet
-                more_stuff_{foo}_{foobar}.nc
+                stuff
+                more_stuff
                 `")""")
         interface = ModuleInterface(**interface_w_wilcards)
-        generated = interface.to_mermaid_flowchart("interface_wildcard.yaml")
+        generated = interface.to_mermaid_flowchart("biomass")
         assert expected == generated
 
 
