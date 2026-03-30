@@ -35,4 +35,4 @@ repos:
 
 
 ci:  # https://pre-commit.ci/
-  autoupdate_schedule: monthly
+  autoupdate_schedule: quarterly

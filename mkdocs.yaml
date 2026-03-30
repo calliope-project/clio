@@ -1,9 +1,9 @@
 # yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
 
-site_name: clio
-site_url: https://clio.readthedocs.io/
+site_name: modelblocks
+site_url: https://modelblocks.readthedocs.io/
 repo_name: clio
-repo_url: https://github.com/calliope-project/clio/
+repo_url: https://github.com/modelblocks-org/docs/
 edit_uri: edit/main/docs/
 theme:
   name: material
@@ -67,7 +67,7 @@ markdown_extensions:
 plugins:
   - git-committers:
       enabled: true
-      repository: calliope-project/clio
+      repository: modelblocks-org/docs
       branch: main
   - search
   - mkdocstrings:
@@ -103,8 +103,5 @@ nav:
     - Developer_guidelines/getting_started.md
     - Developer_guidelines/requirements.md
     - Developer_guidelines/templates.md
-  - API clio_tools:
-    - clio_tools_API/index.md
-    - clio_tools_API/data_module.md
 
-copyright: Copyright &copy; since 2025 <a href="https://github.com/calliope-project/clio/blob/main/AUTHORS">clio contributors</a> (MIT licensed)
+copyright: Copyright &copy; since 2025 <a href="https://github.com/modelblocks-org/docs/blob/main/AUTHORS">modelblocks contributors</a> (Apache 2.0 licensed)

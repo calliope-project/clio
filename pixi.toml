@@ -1,0 +1,19 @@
+[workspace]
+authors = ["Ivan Ruiz Manuel <72193617+irm-codebase@users.noreply.github.com>"]
+channels = ["conda-forge"]
+name = "docs"
+platforms = ["osx-arm64", "linux-64", "win-64"]
+version = "0.1.0"
+
+[tasks]
+build-docs = { cmd = "mkdocs build" }
+serve-docs = { cmd = "mkdocs serve" }
+style = { cmd = "pre-commit run --all-files" }
+test = { cmd = "pytest" }
+
+[dependencies]
+mkdocs-material = ">=9.7.6"
+mkdocs-git-committers-plugin-2 = ">=2.5.0"
+mkdocstrings = ">=1.0.3"
+mkdocs-mermaid2-plugin = ">=1.2.3"
+mkdocstrings-python = ">=2.0.2,<3"

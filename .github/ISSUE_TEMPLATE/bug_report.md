@@ -1,27 +1,25 @@
 ---
-name: Bug report
-about: For problems with the clio repository
+name: Documentation issue
+about: For problems with the documentation repository
 title: ''
-labels: bug
+labels: documentation
 assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+**Describe the problem**
+A clear and concise description of the problem.
 
-**To Reproduce**
-Steps to reproduce the behaviour:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+**Example**
+Please give a step-by-step example of where or how to encounter this issue in the docs:
+1. In the URL ...
+1. I find ...
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+**Proposed solution**
+A clear and concise description of what you think would solve this problem.
 
 **Screenshots**
-If applicable, add screenshots to help explain your problem.
+If applicable, add screenshots to help explain this issue.
 
 **Additional context**
 Add any other context about the problem here.

@@ -2,10 +2,10 @@
 # For more information, see:
 # https://citation-file-format.github.io/
 cff-version: 1.2.0
-message: If you use this software or data produced by it, please cite it using the metadata from this file.
-title: "clio - a framework for modular and easy to understand energy modelling tools"
-repository: https://github.com/calliope-project/clio
-license: MIT
+message: Please cite this project using the metadata from this file.
+title: "modelblocks - Re-usable building blocks for energy system models"
+repository: https://github.com/modelblocks-org/docs
+license: Apache 2.0
 version: 0.0.1
 authors:
   - given-names: Ivan
@@ -17,9 +17,6 @@ authors:
   - given-names: Bryn
     family-names: Pickering
     orcid: https://orcid.org/0000-0003-4044-6587
-  - given-names: Francesco
-    family-names: Lombardi
-    orcid: https://orcid.org/0000-0002-7624-5886
   - given-names: Stefan
     family-names: Pfenninger
     orcid: https://orcid.org/0000-0002-8420-9498

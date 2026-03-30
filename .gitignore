@@ -14,7 +14,6 @@ build/
 dist/
 wheels/
 *.egg-info
-src/clio_tools/_version.py
 
 # Virtual environments
 .venv
@@ -31,3 +30,6 @@ temp/
 
 # Docs
 site
+# pixi environments
+.pixi/*
+!.pixi/config.toml
