@@ -3,7 +3,7 @@
 # https://citation-file-format.github.io/
 cff-version: 1.2.0
 message: If you use this software or data produced by it, please cite it using the metadata from this file.
-title: "clio - a framework for modular and easy to understand energy modelling tools"
+title: "clio - A helper for modular and easy to understand energy modelling workflows"
 repository: https://github.com/calliope-project/clio
 license: MIT
 version: 0.0.1

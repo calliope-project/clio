@@ -1,2 +1,15 @@
-results:
-    'stuff.parquet': Module results.
+pathvars:
+  snakemake_defaults:
+    logs:
+      default: "<logs>"
+      description: location of rule log files.
+    resources:
+      default: "<resources>"
+      description: "location of module resource files."
+    results:
+      default: "<results>"
+      description: "location of module results."
+  results:
+    stuff:
+      default: "<results>/stuff.parquet"
+      description: Module results.

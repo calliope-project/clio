@@ -1,12 +1,28 @@
-resources:
-  user:
-    'table_{foo}.csv': A table with some type of data.
-    'text_{foo}.txt': A text file with more data.
-  automatic:
-    'download_{bar}.nc': A downloaded file.
-results:
-  'stuff_{foobar}.parquet': Module results.
-  'more_stuff_{foo}_{foobar}.nc': More module results.
+pathvars:
+  snakemake_defaults:
+    logs:
+      default: "<logs>"
+      description: location of rule log files.
+    resources:
+      default: "<resources>"
+      description: "location of module resource files."
+    results:
+      default: "<results>"
+      description: "location of module results."
+  user_resources:
+    table:
+      default: "<resources>/user/table_{foo}.csv"
+      description: A table with some type of data.
+    text:
+      default: "<resources>/user/text_{bar}.txt"
+      description: A text file with some data.
+  results:
+    stuff:
+      default: "<results>/stuff_{foobar}.parquet"
+      description: Module results.
+    more_stuff:
+      default: "<results>/more_stuff_{foo}_{foobar}.nc"
+      description: More module results.
 wildcards:
   foo: does a thing
   bar: does something else

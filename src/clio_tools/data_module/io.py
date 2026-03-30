@@ -10,12 +10,74 @@ import yaml
 from pydantic import BaseModel, Field, model_validator
 
 
-class Resources(BaseModel):
-    """Schema for module resources (input files)."""
+def _find_between(text: str, brackets: str) -> list[str]:
+    """Helper to find text inside different bracket configurations."""
+    pattern = rf"{re.escape(brackets[0])}(.*?){re.escape(brackets[1])}"
+    return re.findall(pattern, text)
+
+
+class Pathvar(BaseModel):
+    """Schema for snakemake pathvar definition."""
 
     model_config = {"extra": "forbid"}
-    user: dict[str, str] = Field(default_factory=dict)
-    automatic: dict[str, str] = Field(default_factory=dict)
+
+    default: str
+    "Default setting of this pathvar."
+    description: str
+    "Brief explanation of the pathvar's purpose."
+
+
+class Pathvars(BaseModel):
+    """Schema for snakemake pathvar definition."""
+
+    model_config = {"extra": "forbid"}
+
+    snakemake_defaults: dict[str, Pathvar] = Field(default_factory=dict)
+    "Snakemake default pathvars (logs, resources, results)."
+    user_resources: dict[str, Pathvar] = Field(default_factory=dict)
+    "User input resource pathvar."
+    results: dict[str, Pathvar] = Field(default_factory=dict)
+    "Module result pathvar."
+
+    @model_validator(mode="after")
+    def check_snakemake_defaults(self) -> Self:
+        """Snakemake defaults are communicated correctly."""
+        expected_defaults = {"logs", "resources", "results", "benchmarks"}
+        mismatches = set(self.snakemake_defaults.keys()) - expected_defaults
+        if mismatches:
+            raise ValueError(
+                f"{mismatches} does not match expected snakemake defaults {expected_defaults!r}"
+            )
+        for name, settings in self.snakemake_defaults.items():
+            default = settings.default
+            value = _find_between(default, "<>")
+            if len(value) != 1 and value[0] != name:
+                raise ValueError(
+                    f"{name!r} default path must match snakemake default name."
+                )
+        return self
+
+    @model_validator(mode="after")
+    def check_user_resources(self) -> Self:
+        """Ensure user resource pathvars follow a standard prefix."""
+        prefix = "<resources>/user/"
+        for settings in self.user_resources.values():
+            if not settings.default.startswith(prefix):
+                raise ValueError(
+                    f"User resource pathvars must start with {prefix}. Found {settings.default}."
+                )
+        return self
+
+    @model_validator(mode="after")
+    def check_results(self) -> Self:
+        """Ensure result pathvars follow a standard prefix."""
+        prefix = "<results>/"
+        for settings in self.results.values():
+            if not settings.default.startswith(prefix):
+                raise ValueError(
+                    f"Result pathvars must start with {prefix}. Found {settings.default}."
+                )
+        return self
 
 
 class ModuleInterface(BaseModel):
@@ -23,14 +85,10 @@ class ModuleInterface(BaseModel):
 
     model_config = {"extra": "forbid"}
 
-    resources: Resources = Field(default=Resources())
-    """Resources required by the module."""
-    results: dict[str, str]
-    """Key module result files. Does not need to be comprehensive."""
+    pathvars: Pathvars = Pathvars()
+    "Snakemake pathvars, allowing module input re-wiring."
     wildcards: dict[str, str] = Field(default_factory=dict)
-    """
-    Module wildcards. If provided, these must be present in the keys of either module resources or results.
-    """
+    "Module wildcards. If provided, these must be present in the keys of either module resources or results."
 
     @classmethod
     def from_yaml(cls, path: str | Path):
@@ -42,23 +100,17 @@ class ModuleInterface(BaseModel):
     @model_validator(mode="after")
     def check_wildcards(self) -> Self:
         """Ensure wildcards are specified in file names."""
-
-        def _extract_wildcards(text: str) -> list[str]:
-            # Occurrences of text inside curly brackets
-            return re.findall(r"\{(.*?)\}", text)
-
-        filenames = set(
-            [*self.resources.user, *self.resources.automatic, *self.results]
-        )
+        io_files = [i.default for i in self.pathvars.user_resources.values()]
+        io_files += [i.default for i in self.pathvars.results.values()]
 
         filename_wildcards: set[str] = set()
-        for filename in filenames:
-            filename_wildcards.update(_extract_wildcards(filename))
+        for filename in io_files:
+            filename_wildcards.update(_find_between(filename, "{}"))
 
         diff = filename_wildcards - self.wildcards.keys()
         if diff:
             raise ValueError(
-                f"Wildcards not specified in 'resources' or 'results': {diff}."
+                f"Wildcards not specified in 'user_resources' or 'results' pathvars: {diff}."
             )
         diff = self.wildcards.keys() - filename_wildcards
         if diff:
@@ -76,19 +128,12 @@ class ModuleInterface(BaseModel):
             """)
 
         # Generate user-related part
-        if self.resources.user:
-            user_txt = "\n    ".join(self.resources.user)
+        if self.pathvars.user_resources:
+            user_txt = "\n    ".join(self.pathvars.user_resources)
             mermaid_txt += f"""C1[/"`**user**\n    {user_txt}\n    `"/] --> M\n"""
 
-        # Generate automatic-related part
-        if self.resources.automatic:
-            automatic_txt = "\n    ".join(self.resources.automatic)
-            mermaid_txt += (
-                f"""C2[/"`**automatic**\n    {automatic_txt}\n    `"/] --> M\n"""
-            )
-
         # Generate results part
-        results_txt = "\n    ".join(self.results)
+        results_txt = "\n    ".join(self.pathvars.results)
         mermaid_txt += f"""M --> O1("`**results**\n    {results_txt}\n    `")"""
         return mermaid_txt
 
