@@ -5,7 +5,7 @@ cff-version: 1.2.0
 message: If you use this software or data produced by it, please cite it using the metadata from this file.
 title: "modelblocks - Reusable building blocks for energy system models"
 repository: https://github.com/modelblocks-org/clio-tools
-license: MIT
+license: Apache 2.0
 version: 0.0.1
 authors:
   - given-names: Ivan

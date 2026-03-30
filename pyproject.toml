@@ -73,7 +73,7 @@ ignore-overlong-task-comments = true
 # Build
 # ---
 
-[tool.pixi.project]
+[tool.pixi.workspace]
 channels = [
   "conda-forge",
   "bioconda"
