@@ -1,11 +1,19 @@
 # Home
 
+
+
 Welcome to the [`clio-tools`](https://github.com/modelblocks-org/clio-tools) documentation!
 
 This is a small set of helper code meant to aid the creation of high-quality `snakemake` workflows used for peer-reviewed research.
 It is primarily used during integration tests in modules created using our [data module template](https://github.com/calliope-project/data-module-template).
 
 For more information on functionality, please consult the [API documentation](./clio_tools_API/data_module).
+
+!!! info
+
+    Looking for information on other aspects of Modelblocks?
+    Check the following [Modelblocks](https://www.modelblocks.org/) and our [documentation](https://modelblocks-docs.readthedocs.io/en).
+
 
 ## Development
 
