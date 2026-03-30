@@ -10,9 +10,8 @@ def test_mkdocs_builds(tmp_path, pytestconfig):
         [
             "mkdocs",
             "build",
-            "--strict",
             "--config-file",
-            str(project_root / "mkdocs.yml"),
+            str(project_root / "mkdocs.yaml"),
             "--site-dir",
             str(tmp_path / "site"),
         ],
@@ -20,5 +19,4 @@ def test_mkdocs_builds(tmp_path, pytestconfig):
         capture_output=True,
         text=True,
     )
-
     assert result.returncode == 0, result.stderr

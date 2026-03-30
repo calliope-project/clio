@@ -86,4 +86,4 @@ These are study-specific workflows that combine the outputs of all other types o
 To save time and enable component developers to check against the latest `clio` standards, we provide the `clio_tools` library.
 This is a set of useful utility functions, geared towards ensuring smooth interfacing.
 
-For more information, check the [`clio_tools` API](../clio_tools_API/index.md)
+For more information, check [`clio_tools`](https://github.com/modelblocks-org/clio-tools)
