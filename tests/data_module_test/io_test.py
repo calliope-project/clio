@@ -60,7 +60,9 @@ class TestModuleInterface:
 
     def test_wildcard_not_in_filename(self, interface_w_wilcards):
         """All values in the wildcards section should appear in filenames at least once."""
-        interface_w_wilcards["pathvars"]["user_resources"]["text"]["default"] = "<resources>/user/no_wildcard.txt"
+        interface_w_wilcards["pathvars"]["user_resources"]["text"]["default"] = (
+            "<resources>/user/no_wildcard.txt"
+        )
         with pytest.raises(ValidationError, match="Unused wildcards found"):
             ModuleInterface(**interface_w_wilcards)
 
