@@ -1575,7 +1575,7 @@ packages:
 - pypi: ./
   name: clio-tools
   version: 2025.3.3
-  sha256: 6a8ac9b3c615d307ee116c40b5cb590922b2f9461e1834812544ef68ef03bed2
+  sha256: 32fe2124fc3913dea91bdd1d63f7a22cf2336542ecc1c4c7a90e2b870f2e4e8a
   requires_python: '>=3.12'
 - conda: https://conda.anaconda.org/conda-forge/noarch/colorama-0.4.6-pyhd8ed1ab_1.conda
   sha256: ab29d57dc70786c1269633ba3dff20288b81664d3ff8d21af995742e2bb03287
