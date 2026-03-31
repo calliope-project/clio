@@ -1,16 +1,28 @@
 # Home
 
-Welcome to [`clio`](https://github.com/calliope-project/clio)!
 
-Our main purpose is enabling energy researchers and institutions to share, reuse and improve the data workflows used to construct Energy System Models in a decentralised way.
-We aim to do this by providing an expanding collection of high-quality modular workflows used for peer-reviewed research, inspired by `snakemake`'s [workflow catalog](https://snakemake.github.io/snakemake-workflow-catalog/).
 
-In essence, we wish to turn very complex models that are hard to maintain and reuse into a range of digestible, well supported tools that get better and better over time!
+Welcome to the [`clio-tools`](https://github.com/modelblocks-org/clio-tools) documentation!
 
-![modules](./images/modular.png)
+This is a small set of helper code meant to aid the creation of high-quality `snakemake` workflows used for peer-reviewed research.
+It is primarily used during integration tests in modules created using our [data module template](https://github.com/calliope-project/data-module-template).
 
-Learn about the full list of available [modules](./Modules/modules.md).
+For more information on functionality, please consult the [API documentation](./clio_tools_API/data_module).
 
-## For developers
+!!! info
 
-If you want to start creating your own data modules, check out our [developer guidelines](./Developer_guidelines/getting_started.md).
+    Looking for information on other aspects of Modelblocks?
+
+    Check the [Modelblocks website](https://www.modelblocks.org/) or our [documentation and guidelines](https://modelblocks.readthedocs.io/en).
+
+
+## Development
+
+If you wish to contribute to `clio-tools`, it is easy to set up.
+Simply install [`pixi`](https://pixi.sh/latest/) and run:
+
+```bash
+git clone git@github.com:modelblocks-org/clio-tools.git
+cd clio-tools
+pixi install --all  # Installs both default and developer dependencies
+```

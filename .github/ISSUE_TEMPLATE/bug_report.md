@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: For problems with the clio repository
+about: For problems with the clio-tools repository
 title: ''
 labels: bug
 assignees: ''

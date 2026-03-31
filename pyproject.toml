@@ -17,7 +17,7 @@ classifiers = [
   # Specify the Python versions you support here.
   "Programming Language :: Python :: 3.12",
 ]
-description = "Tools and utilities for clio components"
+description = "Tools and utilities for modelblocks components"
 version = "2025.03.03"
 keywords = ["energy modelling", "workflows", "integration"]
 license = {file = "LICENSE"}
@@ -26,12 +26,12 @@ readme = "README.md"
 requires-python = ">=3.12"
 
 [project.urls]
-changelog = "https://github.com/calliope-project/clio/CHANGELOG"
-documentation = "https://clio.readthedocs.io/"
-homepage = "https://callio.pe"
-issues = "https://github.com/calliope-project/clio/issues"
-repository = "https://github.com/calliope-project/clio"
-website = "https://github.com/calliope-project/clio/"
+changelog = "https://github.com/modelblocks-org/clio-tools/CHANGELOG"
+documentation = "https://clio-tools.readthedocs.io/"
+homepage = "https://github.com/modelblocks-org"
+issues = "https://github.com/modelblocks-org/clio-tools/issues"
+repository = "https://github.com/modelblocks-org/clio-tools"
+website = "https://www.modelblocks.org/"
 
 # ---
 # Dev tooling
