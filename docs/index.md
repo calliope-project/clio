@@ -13,7 +13,7 @@ For more information on functionality, please consult the [API documentation](./
 
     Looking for information on other aspects of Modelblocks?
 
-    Check the [Modelblocks website](https://www.modelblocks.org/) or our [documentation and guidelines](https://modelblocks-docs.readthedocs.io/en).
+    Check the [Modelblocks website](https://www.modelblocks.org/) or our [documentation and guidelines](https://modelblocks.readthedocs.io/en).
 
 
 ## Development
