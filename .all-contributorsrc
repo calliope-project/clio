@@ -1,6 +1,6 @@
 {
-  "projectName": "{{module_code_name}}",
-  "projectOwner": "{{github_org}}",
+  "projectName": "clio-tools",
+  "projectOwner": "modelblocks-org",
   "repoType": "github",
   "repoHost": "https://github.com",
   "files": [
