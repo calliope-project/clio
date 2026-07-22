@@ -30,6 +30,7 @@ Thanks goes to these wonderful people, sorted alphabetically ([emoji key](https:
 <table>
   <tbody>
     <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/brynpickering"><img src="https://avatars.githubusercontent.com/u/17178478?v=4?s=100" width="100px;" alt="Bryn Pickering"/><br /><sub><b>Bryn Pickering</b></sub></a><br /><a href="#ideas-brynpickering" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/modelblocks-org/clio-tools/pulls?q=is%3Apr+reviewed-by%3Abrynpickering" title="Reviewed Pull Requests">👀</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://www.pfenninger.org"><img src="https://avatars.githubusercontent.com/u/141709?v=4?s=100" width="100px;" alt="Stefan Pfenninger-Lee"/><br /><sub><b>Stefan Pfenninger-Lee</b></sub></a><br /><a href="#ideas-sjpfenninger" title="Ideas, Planning, & Feedback">🤔</a> <a href="#mentoring-sjpfenninger" title="Mentoring">🧑‍🏫</a></td>
     </tr>
   </tbody>
